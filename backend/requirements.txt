@@ -1,0 +1,10 @@
+Flask
+transformers
+youtube_transcript_api
+torch
+tensorflow
+flax
+ipython
+googletrans
+flask-cors
+
