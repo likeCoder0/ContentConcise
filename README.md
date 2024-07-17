@@ -62,7 +62,7 @@ An interactive chatbot that provides instant answers based on video summaries.
 1. Clone the repository
    ```bash
    git clone https://github.com/Nilesh270/Questify.git
-   cd aceup-project
+   cd frontend
    ```
 
 2. Install dependencies
