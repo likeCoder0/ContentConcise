@@ -2,17 +2,23 @@ from flask import Flask, request, jsonify
 from model import get_video_summary
 from googletrans import Translator
 from flask_cors import CORS
+import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))  # Configure the API key for Google Generative AI
 
 app = Flask(__name__)
 CORS(app)
 
 def translate_to_hindi(text_list):
+    if not text_list:  # Check if the list is empty or None
+        return "No text to translate."
+
     translator = Translator()
     try:
-        # Concatenate the list of summarized text chunks into a single string
         summary_text = ' '.join(text_list)
-        
-        # Translate the summarized text to Hindi
         translated_text = translator.translate(summary_text, src='en', dest='hi').text
         return translated_text
     except Exception as e:
@@ -30,23 +36,45 @@ def summarize():
     if youtube_video:
         result = get_video_summary(youtube_video)
         
-        # Pass the list of summarized text chunks to the translation function
+        if not result:  # Check if result is an empty list
+            return jsonify({'error': 'Failed to summarize the video or no transcript available.'})
+
         translated_result = translate_to_hindi(result)
         response_data = {
             'summarized_text': result,
             'translated_text': translated_result
         }
 
-        # Add CORS headers for this route
         response = jsonify(response_data)
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     else:
         return jsonify({'error': 'Please provide a YouTube video URL as a query parameter.'})
 
+@app.route('/ask', methods=['POST'])
+def ask():
+    data = request.json
+    question = data.get('question')
+    context = data.get('context')
+
+    if not question or not context:
+        return jsonify({'error': 'Question and context are required.'}), 400
+
+    try:
+        # Initialize the Gemini model
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        # Generate a response based on the question and context
+        response = model.generate_content(f"Answer the following question (1 SENTENCES) based on the context: {question}\nContext: {context}")
+        
+        # Extract the answer text
+        answer_text = response.text
+        return jsonify({'answer': answer_text})
+    except Exception as e:
+        print(f"Error generating answer: {e}")
+        return jsonify({'error': 'Failed to generate an answer.'}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
 
-
-
-
+# .\venv\Scripts\activate 
+# python app.py

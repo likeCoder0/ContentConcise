@@ -24,7 +24,7 @@ const Navbar = async () => {
               font.className
             )}
           >
-            Questify
+            ContentConcise
           </h1>
         </Link>
       </div>

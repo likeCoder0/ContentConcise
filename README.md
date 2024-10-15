@@ -1,11 +1,11 @@
-# Questify - YouTube Video Summarizer
+# ContentConcise - YouTube Video Summarizer
 
 
 ## Overview
 
-Questify is an AI-powered application designed to enhance your learning experience by summarizing YouTube videos, translating these summaries into multiple languages, and providing a voice-command query system. This platform aims to address the challenges faced by students with slow learning abilities, ensuring efficient retrieval of vital information and bridging accessibility gaps.
+ContentConcise is an AI-powered application designed to enhance your learning experience by summarizing YouTube videos, translating these summaries into multiple languages, and providing a voice-command query system. This platform aims to address the challenges faced by students with slow learning abilities, ensuring efficient retrieval of vital information and bridging accessibility gaps.
 
-![Questify Screenshot](readme/Landingpage.png)
+![ContentConcise Screenshot](readme/Landingpage.png)
 
 ## Features
 
@@ -61,7 +61,7 @@ An interactive chatbot that provides instant answers based on video summaries.
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/Nilesh270/Questify.git
+   git clone https://github.com/Nilesh270/ContentConcise.git
    cd frontend
    ```
 

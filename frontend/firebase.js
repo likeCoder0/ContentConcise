@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA7NF631dz2aFd7UCijFFJEUbDFNswuJHo",
-  authDomain: "invictus-f53f2.firebaseapp.com",
-  projectId: "invictus-f53f2",
-  storageBucket: "invictus-f53f2.appspot.com",
-  messagingSenderId: "548019969553",
-  appId: "1:548019969553:web:009b975d321cb8a4529bb0",
+  apiKey: "AIzaSyCzfaJzpcQg0MXZEnyMU7CbZ21bWDjvgrY",
+  authDomain: "summary-app-5ba2a.firebaseapp.com",
+  projectId: "summary-app-5ba2a",
+  storageBucket: "summary-app-5ba2a.appspot.com",
+  messagingSenderId: "556327947656",
+  appId: "1:556327947656:web:bf9c073cff26a6f4cabe3d"
 };
 
 // Initialize Firebase
