@@ -47,7 +47,7 @@ def get_video_summary(youtube_video, summary_length="10 sentence", chunk_size=10
             while retries < max_retries:
                 try:
                     if len(input_text) > 100:  # Only summarize if text is long
-                        response = model.generate_content(f"Summarize this in {summary_length}: {input_text}")
+                        response = model.generate_content(f"Summarize this in Maximium {summary_length}: {input_text}")
                         summarized_text.append(response.text)
                     else:
                         summarized_text.append(input_text)  # Add original if short

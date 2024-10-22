@@ -35,8 +35,8 @@ def summarize():
     youtube_video = request.args.get('youtube_video', default=None)
 
     if youtube_video:
-        # result = get_video_summary(youtube_video)
-        result = get_video_summary_local(youtube_video)
+        result = get_video_summary(youtube_video)
+        # result = get_video_summary_local(youtube_video)
         
         if not result:  # Check if result is an empty list
             return jsonify({'error': 'Failed to summarize the video or no transcript available.'})
