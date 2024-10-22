@@ -49,7 +49,7 @@ def get_video_summary(youtube_video, summary_length="3 sentence", chunk_size=100
                     if len(input_text) > 100:  # Only summarize if text is long
                         response = model.generate_content(
                             f"Please summarize the following text in English in at most {summary_length}: {input_text}")
-
+                        # print("API Response:", response)
                         summarized_text.append(response.text)
                     else:
                         summarized_text.append(input_text)  # Add original if short

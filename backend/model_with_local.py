@@ -43,7 +43,8 @@ def get_video_summary_local(youtube_video):
             except Exception as e:
                 summarized_text.append(f"Error summarizing chunk: {e}")
 
-    return summarized_text
+    return "\n\n".join(summarized_text)
+
 
 # # Example usage:
 # youtube_video = "https://www.youtube.com/watch?v=s2skans2dP4"

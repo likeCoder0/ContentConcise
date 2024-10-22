@@ -21,7 +21,7 @@ def translate_to_hindi(text):
     try:
         # Assuming `text` is a string, so no need to join a list
         translated_text = translator.translate(text, src='en', dest='hi').text
-        print(text)
+        # print(text)
         return translated_text
     except Exception as e:
         print(f"Error translating to Hindi: {e}")
