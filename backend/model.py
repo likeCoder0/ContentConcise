@@ -85,7 +85,8 @@ def get_video_summary(youtube_video, summary_length="1 sentence", chunk_size=100
     
     try:
         # Fetch the transcript
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'en-IN', 'hi'])
+
     except Exception as e:
         return f"Error retrieving transcript: {e}"
 
@@ -117,7 +118,6 @@ def get_video_summary(youtube_video, summary_length="1 sentence", chunk_size=100
                     else:
                         summarized_text.append(f"Error summarizing chunk: {e}")
                         break
-
     return summarized_text
 
 # Example usage:

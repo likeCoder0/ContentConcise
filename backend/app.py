@@ -74,7 +74,7 @@ def ask():
         return jsonify({'error': 'Failed to generate an answer.'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
 
 # .\venv\Scripts\activate 
 # python app.py
