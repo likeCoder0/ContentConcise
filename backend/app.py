@@ -13,14 +13,15 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))  # Configure the API key fo
 app = Flask(__name__)
 CORS(app)
 
-def translate_to_hindi(text_list):
-    if not text_list:  # Check if the list is empty or None
+def translate_to_hindi(text):
+    if not text:  # Check if the text is empty or None
         return "No text to translate."
 
     translator = Translator()
     try:
-        summary_text = ' '.join(text_list)
-        translated_text = translator.translate(summary_text, src='en', dest='hi').text
+        # Assuming `text` is a string, so no need to join a list
+        translated_text = translator.translate(text, src='en', dest='hi').text
+        print(text)
         return translated_text
     except Exception as e:
         print(f"Error translating to Hindi: {e}")

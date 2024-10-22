@@ -20,7 +20,7 @@ class GenerativeAIModel:
             cls._instance.model = genai.GenerativeModel("gemini-1.5-flash")
         return cls._instance
 
-def get_video_summary(youtube_video, summary_length="10 sentence", chunk_size=1000, max_retries=60, delay_between_retries=5):
+def get_video_summary(youtube_video, summary_length="3 sentence", chunk_size=1000, max_retries=60, delay_between_retries=5):
     # Extract video ID from the URL
     video_id = youtube_video.split("=")[-1]  # Using -1 to avoid potential errors
     
@@ -47,7 +47,9 @@ def get_video_summary(youtube_video, summary_length="10 sentence", chunk_size=10
             while retries < max_retries:
                 try:
                     if len(input_text) > 100:  # Only summarize if text is long
-                        response = model.generate_content(f"Summarize this in Maximium {summary_length}: {input_text}")
+                        response = model.generate_content(
+                            f"Please summarize the following text in English in at most {summary_length}: {input_text}")
+
                         summarized_text.append(response.text)
                     else:
                         summarized_text.append(input_text)  # Add original if short
@@ -60,7 +62,7 @@ def get_video_summary(youtube_video, summary_length="10 sentence", chunk_size=10
                         summarized_text.append(f"Error summarizing chunk: {e}")
                         break
                     
-    return summarized_text
+    return "\n\n".join(summarized_text)
 
 # Example usage:
 # youtube_video = "https://www.youtube.com/watch?v=tNrNLoCqzco"

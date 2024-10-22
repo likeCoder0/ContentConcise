@@ -7,4 +7,4 @@ flax
 ipython
 googletrans
 flask-cors
-
+yt-dlp
