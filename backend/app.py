@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from model import get_video_summary
+from model_with_local import get_video_summary_local
 from googletrans import Translator
 from flask_cors import CORS
 import google.generativeai as genai
@@ -34,7 +35,8 @@ def summarize():
     youtube_video = request.args.get('youtube_video', default=None)
 
     if youtube_video:
-        result = get_video_summary(youtube_video)
+        # result = get_video_summary(youtube_video)
+        result = get_video_summary_local(youtube_video)
         
         if not result:  # Check if result is an empty list
             return jsonify({'error': 'Failed to summarize the video or no transcript available.'})
